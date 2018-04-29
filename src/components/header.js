@@ -4,13 +4,7 @@ import styles from './styles.module.css'
 
 const Header = ({ siteTitle }) => (
   <div className={styles.header}>
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
+    <div className={styles['header-layout']}>
       <h1 style={{ margin: 0 }}>
         <Link to="/" className={styles.logo}>
           {siteTitle}

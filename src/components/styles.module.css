@@ -3,6 +3,12 @@
   margin-bottom: 1.45rem;
 }
 
+.header-layout {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1.45rem 1.0875rem;
+}
+
 .logo {
   color: white;
   text-decoration: none;
