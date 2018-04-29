@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styles from './styles.module.css'
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, siteSlogan }) => (
   <div className={styles.header}>
     <div className={styles['header-layout']}>
       <h1 style={{ margin: 0 }}>
@@ -10,6 +10,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      {siteSlogan}
     </div>
   </div>
 )
