@@ -8,7 +8,9 @@ const IndexPage = ({ data }) => {
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       {posts.map((node, key) => (
-        <h3 key={key}>{node.node.frontmatter.title}</h3>
+        <Link to={node.node.frontmatter.slug}>
+          <h3 key={key}>{node.node.frontmatter.title}</h3>
+        </Link>
       ))}
     </div>
   )
