@@ -23,7 +23,7 @@ export const contentQuery = graphql`
         node {
           frontmatter {
             title
-            path
+            slug
             date
           }
         }
