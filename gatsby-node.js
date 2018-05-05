@@ -12,35 +12,32 @@ exports.onCreateNode = ({ node, boundActionCreators }) => {
   }
 }
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
+exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
+  const results = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
       }
-    `).then(results => {
-      const posts = results.data.allMarkdownRemark.edges
-      posts.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          context: {
-            slug: node.fields.slug,
-          },
-          component: path.resolve('./src/templates/blog-post.js'),
-        })
-      })
+    }
+  `)
 
-      resolve()
+  const posts = results.data.allMarkdownRemark.edges
+
+  posts.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      context: {
+        slug: node.fields.slug,
+      },
+      component: path.resolve('./src/templates/blog-post.js'),
     })
   })
 }
